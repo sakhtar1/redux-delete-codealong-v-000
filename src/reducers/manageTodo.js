@@ -3,12 +3,13 @@ export default function manageTodo(state = {
 }, action) {
   switch (action.type) {
     case 'ADD_TODO':
-
-      return { todos: state.todos.concat(action.payload.text) };
-    case 'DELETE':
-      return{ 
-        todos: state.todos.filter(todo => todo !== action.payload)
+      const todo = {
+        id: Math.random()*10000000000000000,
+        text: action.payload.text
       }
+      return { todos: state.todos.concat(todo) };
+    case 'DELETE':
+      return { todos: state.todos.filter(todo => todo !== action.payload) }:
     default:
       return state;
   }
